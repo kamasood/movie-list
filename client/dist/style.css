@@ -1,3 +1,25 @@
 body {
   font-family: sans-serif, arial;
 }
+
+.page-title {
+  font-family: Roboto, sans-serif, arial;
+  padding: 10px;
+  background-color: lightgray;
+}
+
+#app {
+  margin: 10%;
+}
+
+.movieEntry {
+  border: 2px solid black;
+  border-top: hidden;
+  padding: 20px;
+}
+
+.movieEntry:first-child {
+  border: 2px solid black;
+}
+
+
