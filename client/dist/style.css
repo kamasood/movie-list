@@ -1,29 +1,48 @@
 body {
   font-family: sans-serif, arial;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  margin: 10% 20%;
+}
+
+.page-dynamic-view {
+  border: 1px solid grey;
 }
 
 .page-title {
   font-family: Roboto, sans-serif, arial;
-  padding: 10px;
+  padding: 25px;
+  margin: 0;
   background-color: lightgray;
 }
 
-#app {
-  margin: 10%;
+.search-form {
+  display: inline-block;
 }
 
-.movieEntry {
-  border: 2px solid black;
+.search-button {
+  display: inline-block;
+}
+
+.movie-entry:first-child {
+  border: 2px solid grey;
+}
+
+.search-grid,
+.movies-list,
+.add-form {
+  margin: 0 40px;
+}
+
+.movie-entry {
+  border: 2px solid grey;
   border-top: hidden;
   padding: 20px;
 }
 
-.movieEntry:first-child {
-  border: 2px solid black;
+.watched-button {
+  place-self: end;
 }
-
-.searchForm,
-.addForm {
-  margin: 20px 0;
-}
-

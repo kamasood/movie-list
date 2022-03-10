@@ -15,12 +15,15 @@ class Search extends React.Component {
 
   render() {
     return (
-        <div>
-        <button onClick={(e) => {this.props.displayWatchListMovies()}}>Watch List</button>
-        <button onClick={(e) => {this.props.displayWatchedMovies()}}>Watched</button>
+        <div className="search-grid">
+        <button className="search-button" onClick={(e) => {this.props.displayWatchListMovies()}}>Watch List</button>
+        <button className="search-button" onClick={(e) => {this.props.displayWatchedMovies()}}>Watched</button>
         <form
-          className='searchForm'
-          onSubmit={(e) => {this.props.handleSearchSubmit(e, this.state.value)}}>
+          className="search-form"
+          onSubmit={(e) => {
+            this.props.handleSearchSubmit(e, this.state.value);
+            this.handleChange({value: ''})
+          }}>
           <input
             type="text"
             placeholder="Search..."

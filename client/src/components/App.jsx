@@ -3,8 +3,6 @@ import List from './List.jsx';
 import Search from './Search.jsx';
 import Add from './Add.jsx';
 
-//stateless functional component
-
 class App extends React.Component {
 
   constructor(props) {
@@ -12,13 +10,8 @@ class App extends React.Component {
     this.state = {
       allMovies: [],
       displayedMovies: [],
-      listSelected: 'all'
+      listSelected: 'watchlist'
     };
-
-    // this.displayWatchedMovies.bind(this);
-    // this.displayWatchListMovies.bind(this);
-    // this.handleAddSubmit.bind(this);
-    // this.handleSearchSubmit.bind(this);
   }
 
   displayWatchedMovies() {
@@ -33,7 +26,7 @@ class App extends React.Component {
     let watchListMovies = this.state.allMovies.filter(({watched}) => !watched);
     this.setState({
       displayedMovies: watchListMovies,
-      listSelected: 'watch list'
+      listSelected: 'watchlist'
     })
   }
 
@@ -49,19 +42,18 @@ class App extends React.Component {
 
   handleAddSubmit(event, title) {
     event.preventDefault();
-    let movies = this.state.allMovies.slice();
-    movies.push({title, watched: false});
-    this.setState({
-      allMovies: movies,
-      displayedMovies: movies
-    })
+    this.state.allMovies.push({ title, watched: false});
+    if (this.state.listSelected  === 'watchlist') {
+      this.displayWatchListMovies();
+    } else if (this.state.listSelected === 'watched') {
+      this.displayWatchedMovies();
+    }
   }
 
   handleSearchSubmit(event, query) {
     event.preventDefault();
     const newMovieList = this.state.allMovies.filter(({title}) =>
       title.toLowerCase().includes(query.toLowerCase()));
-    console.log(newMovieList)
     this.setState({
       displayedMovies: newMovieList
     });
@@ -69,8 +61,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='pageDynamicView'>
-        <h1 className='page-title'>MovieList</h1>
+      <div className="page-dynamic-view">
+        <h1 className="page-title">MovieList</h1>
         <Add handleAddSubmit={this.handleAddSubmit.bind(this)}/>
         <Search
           displayWatchListMovies={this.displayWatchListMovies.bind(this)}
@@ -83,13 +75,5 @@ class App extends React.Component {
     );
   }
 }
-// hardcoded movies data
-var movies = [
-  {title: 'Mean Girls'},
-  {title: 'Hackers'},
-  {title: 'The Grey'},
-  {title: 'Sunshine'},
-  {title: 'Ex Machina'},
-];
 
 export default App;

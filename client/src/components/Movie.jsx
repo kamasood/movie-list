@@ -1,12 +1,10 @@
 import React from 'react';
 
 const Movie = ({movie, handleWatchedClick}) => (
-
-  // renders movie entry, handler for clicking watched
-  <div className='movieEntry'>{movie.title}
+  <div className="movie-entry">{movie.title}
     <button
-      onClick={(e) => {handleWatchedClick(e, movie)}} // should be reference to movie object in storage array
-    >
+      className="watched-button"
+      onClick={(e) => {handleWatchedClick(e, movie)}}>
       watched
     </button>
   </div>

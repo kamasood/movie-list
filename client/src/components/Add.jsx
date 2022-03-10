@@ -17,13 +17,17 @@ class Add extends React.Component {
   // renders form text and submit button, handler for onSubmit
   render() {
     return(
-      <form className='addForm' onSubmit={(e) => {this.props.handleAddSubmit(e, this.state.value)}}>
+      <form className="add-form" onSubmit={(e) => {
+        this.props.handleAddSubmit(e, this.state.value);
+        this.handleChange({value: ''})
+      }}>
         <input
+          className="add-input"
           type="text"
           placeholder="Add movie title here"
           value={this.state.value}
           onChange={(e) => this.handleChange(e.target)}></input>
-        <input type="submit" value="Add"></input>
+        <input className="add-button" type="submit" value="Add"></input>
       </form>
     );
   }
