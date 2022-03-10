@@ -1,19 +1,15 @@
 import React from 'react';
 import Movie from './Movie.jsx';
 
-// stateless functional component
-
-const List = ({movies}) => (
+const List = ({movies, handleWatchedClick}) => (
   <div className='moviesList'>
-    {movies.map((movie) => <Movie movie={movie} />)}
+    {movies.map((movie) => (
+      <Movie
+        movie={movie}
+        key={movie.title}
+        handleWatchedClick={handleWatchedClick}/>
+    ))}
   </div>
 );
 
 export default List;
-
-// const App = (props) => (
-//   <div className='moviesListDynamic'>
-//     <h1 className='pageTitle'>MovieList</h1>
-//     <List movies={movies}/>
-//   </div>
-// );
